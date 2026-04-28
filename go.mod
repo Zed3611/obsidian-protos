@@ -1,4 +1,4 @@
-module obsidian-protos
+module github.com/Zed3611/obsidian-protos
 
 go 1.25.5
 
