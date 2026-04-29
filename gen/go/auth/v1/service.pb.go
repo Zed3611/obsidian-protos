@@ -131,6 +131,8 @@ type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	Ip            string                 `protobuf:"bytes,3,opt,name=ip,proto3" json:"ip,omitempty"`
+	UserAgent     string                 `protobuf:"bytes,4,opt,name=user_agent,json=userAgent,proto3" json:"user_agent,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -175,6 +177,20 @@ func (x *LoginRequest) GetEmail() string {
 func (x *LoginRequest) GetPassword() string {
 	if x != nil {
 		return x.Password
+	}
+	return ""
+}
+
+func (x *LoginRequest) GetIp() string {
+	if x != nil {
+		return x.Ip
+	}
+	return ""
+}
+
+func (x *LoginRequest) GetUserAgent() string {
+	if x != nil {
+		return x.UserAgent
 	}
 	return ""
 }
@@ -278,7 +294,6 @@ func (x *LogoutRequest) GetAccessToken() string {
 
 type LogoutResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -311,13 +326,6 @@ func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
 func (*LogoutResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_service_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *LogoutResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 // Token rotation
@@ -504,6 +512,7 @@ func (x *Session) GetIsCurrent() bool {
 
 type GetSessionsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -536,6 +545,13 @@ func (x *GetSessionsRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use GetSessionsRequest.ProtoReflect.Descriptor instead.
 func (*GetSessionsRequest) Descriptor() ([]byte, []int) {
 	return file_auth_v1_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetSessionsRequest) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
 }
 
 type GetSessionsResponse struct {
@@ -584,7 +600,8 @@ func (x *GetSessionsResponse) GetSessions() []*Session {
 
 type RevokeSessionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	SessionId     string                 `protobuf:"bytes,1,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	SessionId     int64                  `protobuf:"varint,2,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -619,16 +636,22 @@ func (*RevokeSessionRequest) Descriptor() ([]byte, []int) {
 	return file_auth_v1_service_proto_rawDescGZIP(), []int{11}
 }
 
-func (x *RevokeSessionRequest) GetSessionId() string {
+func (x *RevokeSessionRequest) GetAccessToken() string {
 	if x != nil {
-		return x.SessionId
+		return x.AccessToken
 	}
 	return ""
 }
 
+func (x *RevokeSessionRequest) GetSessionId() int64 {
+	if x != nil {
+		return x.SessionId
+	}
+	return 0
+}
+
 type RevokeSessionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -661,13 +684,6 @@ func (x *RevokeSessionResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use RevokeSessionResponse.ProtoReflect.Descriptor instead.
 func (*RevokeSessionResponse) Descriptor() ([]byte, []int) {
 	return file_auth_v1_service_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *RevokeSessionResponse) GetSuccess() bool {
-	if x != nil {
-		return x.Success
-	}
-	return false
 }
 
 type RevokeAllSessionsRequest struct {
@@ -760,17 +776,19 @@ const file_auth_v1_service_proto_rawDesc = "" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"A\n" +
 	"\x10RegisterResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
-	"\x05email\x18\x02 \x01(\tR\x05email\"@\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\"o\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"W\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x0e\n" +
+	"\x02ip\x18\x03 \x01(\tR\x02ip\x12\x1d\n" +
+	"\n" +
+	"user_agent\x18\x04 \x01(\tR\tuserAgent\"W\n" +
 	"\rLoginResponse\x12!\n" +
 	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
 	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"2\n" +
 	"\rLogoutRequest\x12!\n" +
-	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"*\n" +
-	"\x0eLogoutResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\":\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"\x10\n" +
+	"\x0eLogoutResponse\":\n" +
 	"\x13RefreshTokenRequest\x12#\n" +
 	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"^\n" +
 	"\x14RefreshTokenResponse\x12#\n" +
@@ -786,15 +804,16 @@ const file_auth_v1_service_proto_rawDesc = "" +
 	"\n" +
 	"updated_at\x18\x05 \x01(\tR\tupdatedAt\x12\x1d\n" +
 	"\n" +
-	"is_current\x18\x06 \x01(\bR\tisCurrent\"\x14\n" +
-	"\x12GetSessionsRequest\"C\n" +
+	"is_current\x18\x06 \x01(\bR\tisCurrent\"7\n" +
+	"\x12GetSessionsRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\"C\n" +
 	"\x13GetSessionsResponse\x12,\n" +
-	"\bsessions\x18\x01 \x03(\v2\x10.auth.v1.SessionR\bsessions\"5\n" +
-	"\x14RevokeSessionRequest\x12\x1d\n" +
+	"\bsessions\x18\x01 \x03(\v2\x10.auth.v1.SessionR\bsessions\"X\n" +
+	"\x14RevokeSessionRequest\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12\x1d\n" +
 	"\n" +
-	"session_id\x18\x01 \x01(\tR\tsessionId\"1\n" +
-	"\x15RevokeSessionResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"\x1a\n" +
+	"session_id\x18\x02 \x01(\x03R\tsessionId\"\x17\n" +
+	"\x15RevokeSessionResponse\"\x1a\n" +
 	"\x18RevokeAllSessionsRequest\"@\n" +
 	"\x19RevokeAllSessionsResponse\x12#\n" +
 	"\rrevoked_count\x18\x01 \x01(\x03R\frevokedCount2\x84\x04\n" +

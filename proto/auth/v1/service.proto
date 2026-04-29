@@ -28,6 +28,8 @@ message RegisterResponse {
 message LoginRequest {
   string email = 1;
   string password = 2;
+  string ip = 3;
+  string user_agent = 4;
 }
 message LoginResponse {
   string access_token = 1;
@@ -38,9 +40,7 @@ message LoginResponse {
 message LogoutRequest {
   string access_token = 1;
 }
-message LogoutResponse {
-  bool success = 1;
-}
+message LogoutResponse {}
 
 // Token rotation
 message RefreshTokenRequest {
@@ -60,17 +60,18 @@ message Session {
   string updated_at = 5;
   bool is_current = 6;
 }
-message GetSessionsRequest {}
+message GetSessionsRequest {
+  string access_token = 1;
+}
 message GetSessionsResponse {
   repeated Session sessions = 1;
 }
 
 message RevokeSessionRequest {
-  string session_id = 1;
+  string access_token = 1;
+  int64 session_id = 2;
 }
-message RevokeSessionResponse {
-  bool success = 1;
-}
+message RevokeSessionResponse {}
 
 message RevokeAllSessionsRequest {}
 message RevokeAllSessionsResponse {
