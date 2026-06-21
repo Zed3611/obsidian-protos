@@ -12,6 +12,7 @@ message SendEventRequest {
   string action = 1;
   string json_payload = 2;
   int64 user_id = 3;
+  int64 session_id = 4;
 }
 
 message SendEventResponse {}
