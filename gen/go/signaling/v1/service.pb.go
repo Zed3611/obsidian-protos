@@ -111,7 +111,7 @@ func (x *GetJoinTokenResponse) GetToken() string {
 }
 
 // E2EE
-type DistributeE2EEPublickKeyRequest struct {
+type DistributeE2EEPublicKeyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	PublicKey     []int64                `protobuf:"varint,1,rep,packed,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
 	RoomId        string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
@@ -120,20 +120,20 @@ type DistributeE2EEPublickKeyRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DistributeE2EEPublickKeyRequest) Reset() {
-	*x = DistributeE2EEPublickKeyRequest{}
+func (x *DistributeE2EEPublicKeyRequest) Reset() {
+	*x = DistributeE2EEPublicKeyRequest{}
 	mi := &file_signaling_v1_service_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DistributeE2EEPublickKeyRequest) String() string {
+func (x *DistributeE2EEPublicKeyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DistributeE2EEPublickKeyRequest) ProtoMessage() {}
+func (*DistributeE2EEPublicKeyRequest) ProtoMessage() {}
 
-func (x *DistributeE2EEPublickKeyRequest) ProtoReflect() protoreflect.Message {
+func (x *DistributeE2EEPublicKeyRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_signaling_v1_service_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -145,52 +145,52 @@ func (x *DistributeE2EEPublickKeyRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DistributeE2EEPublickKeyRequest.ProtoReflect.Descriptor instead.
-func (*DistributeE2EEPublickKeyRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DistributeE2EEPublicKeyRequest.ProtoReflect.Descriptor instead.
+func (*DistributeE2EEPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *DistributeE2EEPublickKeyRequest) GetPublicKey() []int64 {
+func (x *DistributeE2EEPublicKeyRequest) GetPublicKey() []int64 {
 	if x != nil {
 		return x.PublicKey
 	}
 	return nil
 }
 
-func (x *DistributeE2EEPublickKeyRequest) GetRoomId() string {
+func (x *DistributeE2EEPublicKeyRequest) GetRoomId() string {
 	if x != nil {
 		return x.RoomId
 	}
 	return ""
 }
 
-func (x *DistributeE2EEPublickKeyRequest) GetIsFirst() bool {
+func (x *DistributeE2EEPublicKeyRequest) GetIsFirst() bool {
 	if x != nil {
 		return x.IsFirst
 	}
 	return false
 }
 
-type DistributeE2EEPublickKeyResponse struct {
+type DistributeE2EEPublicKeyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DistributeE2EEPublickKeyResponse) Reset() {
-	*x = DistributeE2EEPublickKeyResponse{}
+func (x *DistributeE2EEPublicKeyResponse) Reset() {
+	*x = DistributeE2EEPublicKeyResponse{}
 	mi := &file_signaling_v1_service_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DistributeE2EEPublickKeyResponse) String() string {
+func (x *DistributeE2EEPublicKeyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DistributeE2EEPublickKeyResponse) ProtoMessage() {}
+func (*DistributeE2EEPublicKeyResponse) ProtoMessage() {}
 
-func (x *DistributeE2EEPublickKeyResponse) ProtoReflect() protoreflect.Message {
+func (x *DistributeE2EEPublicKeyResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_signaling_v1_service_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -202,12 +202,12 @@ func (x *DistributeE2EEPublickKeyResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DistributeE2EEPublickKeyResponse.ProtoReflect.Descriptor instead.
-func (*DistributeE2EEPublickKeyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DistributeE2EEPublicKeyResponse.ProtoReflect.Descriptor instead.
+func (*DistributeE2EEPublicKeyResponse) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{3}
 }
 
-type DistributeE2EEEcnryptedMediaKeyRequest struct {
+type DistributeE2EEEncryptedMediaKeyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	MediaKey      []int64                `protobuf:"varint,1,rep,packed,name=media_key,json=mediaKey,proto3" json:"media_key,omitempty"`
 	Iv            []int64                `protobuf:"varint,2,rep,packed,name=iv,proto3" json:"iv,omitempty"`
@@ -218,20 +218,20 @@ type DistributeE2EEEcnryptedMediaKeyRequest struct {
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) Reset() {
-	*x = DistributeE2EEEcnryptedMediaKeyRequest{}
+func (x *DistributeE2EEEncryptedMediaKeyRequest) Reset() {
+	*x = DistributeE2EEEncryptedMediaKeyRequest{}
 	mi := &file_signaling_v1_service_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) String() string {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DistributeE2EEEcnryptedMediaKeyRequest) ProtoMessage() {}
+func (*DistributeE2EEEncryptedMediaKeyRequest) ProtoMessage() {}
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) ProtoReflect() protoreflect.Message {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_signaling_v1_service_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -243,66 +243,66 @@ func (x *DistributeE2EEEcnryptedMediaKeyRequest) ProtoReflect() protoreflect.Mes
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DistributeE2EEEcnryptedMediaKeyRequest.ProtoReflect.Descriptor instead.
-func (*DistributeE2EEEcnryptedMediaKeyRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use DistributeE2EEEncryptedMediaKeyRequest.ProtoReflect.Descriptor instead.
+func (*DistributeE2EEEncryptedMediaKeyRequest) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) GetMediaKey() []int64 {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetMediaKey() []int64 {
 	if x != nil {
 		return x.MediaKey
 	}
 	return nil
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) GetIv() []int64 {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetIv() []int64 {
 	if x != nil {
 		return x.Iv
 	}
 	return nil
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) GetKeyIndex() int64 {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetKeyIndex() int64 {
 	if x != nil {
 		return x.KeyIndex
 	}
 	return 0
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) GetRoomId() string {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetRoomId() string {
 	if x != nil {
 		return x.RoomId
 	}
 	return ""
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyRequest) GetToUserId() int64 {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetToUserId() int64 {
 	if x != nil {
 		return x.ToUserId
 	}
 	return 0
 }
 
-type DistributeE2EEEcnryptedMediaKeyResponse struct {
+type DistributeE2EEEncryptedMediaKeyResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyResponse) Reset() {
-	*x = DistributeE2EEEcnryptedMediaKeyResponse{}
+func (x *DistributeE2EEEncryptedMediaKeyResponse) Reset() {
+	*x = DistributeE2EEEncryptedMediaKeyResponse{}
 	mi := &file_signaling_v1_service_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DistributeE2EEEcnryptedMediaKeyResponse) String() string {
+func (x *DistributeE2EEEncryptedMediaKeyResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DistributeE2EEEcnryptedMediaKeyResponse) ProtoMessage() {}
+func (*DistributeE2EEEncryptedMediaKeyResponse) ProtoMessage() {}
 
-func (x *DistributeE2EEEcnryptedMediaKeyResponse) ProtoReflect() protoreflect.Message {
+func (x *DistributeE2EEEncryptedMediaKeyResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_signaling_v1_service_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -314,8 +314,8 @@ func (x *DistributeE2EEEcnryptedMediaKeyResponse) ProtoReflect() protoreflect.Me
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DistributeE2EEEcnryptedMediaKeyResponse.ProtoReflect.Descriptor instead.
-func (*DistributeE2EEEcnryptedMediaKeyResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use DistributeE2EEEncryptedMediaKeyResponse.ProtoReflect.Descriptor instead.
+func (*DistributeE2EEEncryptedMediaKeyResponse) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{5}
 }
 
@@ -327,25 +327,25 @@ const file_signaling_v1_service_proto_rawDesc = "" +
 	"\x13GetJoinTokenRequest\x12\x17\n" +
 	"\aroom_id\x18\x01 \x01(\tR\x06roomId\",\n" +
 	"\x14GetJoinTokenResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"t\n" +
-	"\x1fDistributeE2EEPublickKeyRequest\x12\x1d\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"s\n" +
+	"\x1eDistributeE2EEPublicKeyRequest\x12\x1d\n" +
 	"\n" +
 	"public_key\x18\x01 \x03(\x03R\tpublicKey\x12\x17\n" +
 	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x19\n" +
-	"\bis_first\x18\x03 \x01(\bR\aisFirst\"\"\n" +
-	" DistributeE2EEPublickKeyResponse\"\xa9\x01\n" +
-	"&DistributeE2EEEcnryptedMediaKeyRequest\x12\x1b\n" +
+	"\bis_first\x18\x03 \x01(\bR\aisFirst\"!\n" +
+	"\x1fDistributeE2EEPublicKeyResponse\"\xa9\x01\n" +
+	"&DistributeE2EEEncryptedMediaKeyRequest\x12\x1b\n" +
 	"\tmedia_key\x18\x01 \x03(\x03R\bmediaKey\x12\x0e\n" +
 	"\x02iv\x18\x02 \x03(\x03R\x02iv\x12\x1b\n" +
 	"\tkey_index\x18\x03 \x01(\x03R\bkeyIndex\x12\x17\n" +
 	"\aroom_id\x18\x04 \x01(\tR\x06roomId\x12\x1c\n" +
 	"\n" +
 	"to_user_id\x18\x05 \x01(\x03R\btoUserId\")\n" +
-	"'DistributeE2EEEcnryptedMediaKeyResponse2\xf5\x02\n" +
+	"'DistributeE2EEEncryptedMediaKeyResponse2\xf2\x02\n" +
 	"\x10SignalingService\x12U\n" +
-	"\fGetJoinToken\x12!.signaling.v1.GetJoinTokenRequest\x1a\".signaling.v1.GetJoinTokenResponse\x12y\n" +
-	"\x18DistributeE2EEPublickKey\x12-.signaling.v1.DistributeE2EEPublickKeyRequest\x1a..signaling.v1.DistributeE2EEPublickKeyResponse\x12\x8e\x01\n" +
-	"\x1fDistributeE2EEEcnryptedMediaKey\x124.signaling.v1.DistributeE2EEEcnryptedMediaKeyRequest\x1a5.signaling.v1.DistributeE2EEEcnryptedMediaKeyResponseB\x17Z\x15obsidian.signaling.v1b\x06proto3"
+	"\fGetJoinToken\x12!.signaling.v1.GetJoinTokenRequest\x1a\".signaling.v1.GetJoinTokenResponse\x12v\n" +
+	"\x17DistributeE2EEPublicKey\x12,.signaling.v1.DistributeE2EEPublicKeyRequest\x1a-.signaling.v1.DistributeE2EEPublicKeyResponse\x12\x8e\x01\n" +
+	"\x1fDistributeE2EEEncryptedMediaKey\x124.signaling.v1.DistributeE2EEEncryptedMediaKeyRequest\x1a5.signaling.v1.DistributeE2EEEncryptedMediaKeyResponseB\x17Z\x15obsidian.signaling.v1b\x06proto3"
 
 var (
 	file_signaling_v1_service_proto_rawDescOnce sync.Once
@@ -363,18 +363,18 @@ var file_signaling_v1_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_signaling_v1_service_proto_goTypes = []any{
 	(*GetJoinTokenRequest)(nil),                     // 0: signaling.v1.GetJoinTokenRequest
 	(*GetJoinTokenResponse)(nil),                    // 1: signaling.v1.GetJoinTokenResponse
-	(*DistributeE2EEPublickKeyRequest)(nil),         // 2: signaling.v1.DistributeE2EEPublickKeyRequest
-	(*DistributeE2EEPublickKeyResponse)(nil),        // 3: signaling.v1.DistributeE2EEPublickKeyResponse
-	(*DistributeE2EEEcnryptedMediaKeyRequest)(nil),  // 4: signaling.v1.DistributeE2EEEcnryptedMediaKeyRequest
-	(*DistributeE2EEEcnryptedMediaKeyResponse)(nil), // 5: signaling.v1.DistributeE2EEEcnryptedMediaKeyResponse
+	(*DistributeE2EEPublicKeyRequest)(nil),          // 2: signaling.v1.DistributeE2EEPublicKeyRequest
+	(*DistributeE2EEPublicKeyResponse)(nil),         // 3: signaling.v1.DistributeE2EEPublicKeyResponse
+	(*DistributeE2EEEncryptedMediaKeyRequest)(nil),  // 4: signaling.v1.DistributeE2EEEncryptedMediaKeyRequest
+	(*DistributeE2EEEncryptedMediaKeyResponse)(nil), // 5: signaling.v1.DistributeE2EEEncryptedMediaKeyResponse
 }
 var file_signaling_v1_service_proto_depIdxs = []int32{
 	0, // 0: signaling.v1.SignalingService.GetJoinToken:input_type -> signaling.v1.GetJoinTokenRequest
-	2, // 1: signaling.v1.SignalingService.DistributeE2EEPublickKey:input_type -> signaling.v1.DistributeE2EEPublickKeyRequest
-	4, // 2: signaling.v1.SignalingService.DistributeE2EEEcnryptedMediaKey:input_type -> signaling.v1.DistributeE2EEEcnryptedMediaKeyRequest
+	2, // 1: signaling.v1.SignalingService.DistributeE2EEPublicKey:input_type -> signaling.v1.DistributeE2EEPublicKeyRequest
+	4, // 2: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:input_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyRequest
 	1, // 3: signaling.v1.SignalingService.GetJoinToken:output_type -> signaling.v1.GetJoinTokenResponse
-	3, // 4: signaling.v1.SignalingService.DistributeE2EEPublickKey:output_type -> signaling.v1.DistributeE2EEPublickKeyResponse
-	5, // 5: signaling.v1.SignalingService.DistributeE2EEEcnryptedMediaKey:output_type -> signaling.v1.DistributeE2EEEcnryptedMediaKeyResponse
+	3, // 4: signaling.v1.SignalingService.DistributeE2EEPublicKey:output_type -> signaling.v1.DistributeE2EEPublicKeyResponse
+	5, // 5: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:output_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

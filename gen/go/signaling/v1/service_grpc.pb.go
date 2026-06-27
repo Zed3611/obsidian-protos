@@ -20,8 +20,8 @@ const _ = grpc.SupportPackageIsVersion9
 
 const (
 	SignalingService_GetJoinToken_FullMethodName                    = "/signaling.v1.SignalingService/GetJoinToken"
-	SignalingService_DistributeE2EEPublickKey_FullMethodName        = "/signaling.v1.SignalingService/DistributeE2EEPublickKey"
-	SignalingService_DistributeE2EEEcnryptedMediaKey_FullMethodName = "/signaling.v1.SignalingService/DistributeE2EEEcnryptedMediaKey"
+	SignalingService_DistributeE2EEPublicKey_FullMethodName         = "/signaling.v1.SignalingService/DistributeE2EEPublicKey"
+	SignalingService_DistributeE2EEEncryptedMediaKey_FullMethodName = "/signaling.v1.SignalingService/DistributeE2EEEncryptedMediaKey"
 )
 
 // SignalingServiceClient is the client API for SignalingService service.
@@ -29,8 +29,8 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type SignalingServiceClient interface {
 	GetJoinToken(ctx context.Context, in *GetJoinTokenRequest, opts ...grpc.CallOption) (*GetJoinTokenResponse, error)
-	DistributeE2EEPublickKey(ctx context.Context, in *DistributeE2EEPublickKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEPublickKeyResponse, error)
-	DistributeE2EEEcnryptedMediaKey(ctx context.Context, in *DistributeE2EEEcnryptedMediaKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEEcnryptedMediaKeyResponse, error)
+	DistributeE2EEPublicKey(ctx context.Context, in *DistributeE2EEPublicKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEPublicKeyResponse, error)
+	DistributeE2EEEncryptedMediaKey(ctx context.Context, in *DistributeE2EEEncryptedMediaKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEEncryptedMediaKeyResponse, error)
 }
 
 type signalingServiceClient struct {
@@ -51,20 +51,20 @@ func (c *signalingServiceClient) GetJoinToken(ctx context.Context, in *GetJoinTo
 	return out, nil
 }
 
-func (c *signalingServiceClient) DistributeE2EEPublickKey(ctx context.Context, in *DistributeE2EEPublickKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEPublickKeyResponse, error) {
+func (c *signalingServiceClient) DistributeE2EEPublicKey(ctx context.Context, in *DistributeE2EEPublicKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEPublicKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DistributeE2EEPublickKeyResponse)
-	err := c.cc.Invoke(ctx, SignalingService_DistributeE2EEPublickKey_FullMethodName, in, out, cOpts...)
+	out := new(DistributeE2EEPublicKeyResponse)
+	err := c.cc.Invoke(ctx, SignalingService_DistributeE2EEPublicKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *signalingServiceClient) DistributeE2EEEcnryptedMediaKey(ctx context.Context, in *DistributeE2EEEcnryptedMediaKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEEcnryptedMediaKeyResponse, error) {
+func (c *signalingServiceClient) DistributeE2EEEncryptedMediaKey(ctx context.Context, in *DistributeE2EEEncryptedMediaKeyRequest, opts ...grpc.CallOption) (*DistributeE2EEEncryptedMediaKeyResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(DistributeE2EEEcnryptedMediaKeyResponse)
-	err := c.cc.Invoke(ctx, SignalingService_DistributeE2EEEcnryptedMediaKey_FullMethodName, in, out, cOpts...)
+	out := new(DistributeE2EEEncryptedMediaKeyResponse)
+	err := c.cc.Invoke(ctx, SignalingService_DistributeE2EEEncryptedMediaKey_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -76,8 +76,8 @@ func (c *signalingServiceClient) DistributeE2EEEcnryptedMediaKey(ctx context.Con
 // for forward compatibility.
 type SignalingServiceServer interface {
 	GetJoinToken(context.Context, *GetJoinTokenRequest) (*GetJoinTokenResponse, error)
-	DistributeE2EEPublickKey(context.Context, *DistributeE2EEPublickKeyRequest) (*DistributeE2EEPublickKeyResponse, error)
-	DistributeE2EEEcnryptedMediaKey(context.Context, *DistributeE2EEEcnryptedMediaKeyRequest) (*DistributeE2EEEcnryptedMediaKeyResponse, error)
+	DistributeE2EEPublicKey(context.Context, *DistributeE2EEPublicKeyRequest) (*DistributeE2EEPublicKeyResponse, error)
+	DistributeE2EEEncryptedMediaKey(context.Context, *DistributeE2EEEncryptedMediaKeyRequest) (*DistributeE2EEEncryptedMediaKeyResponse, error)
 	mustEmbedUnimplementedSignalingServiceServer()
 }
 
@@ -91,11 +91,11 @@ type UnimplementedSignalingServiceServer struct{}
 func (UnimplementedSignalingServiceServer) GetJoinToken(context.Context, *GetJoinTokenRequest) (*GetJoinTokenResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetJoinToken not implemented")
 }
-func (UnimplementedSignalingServiceServer) DistributeE2EEPublickKey(context.Context, *DistributeE2EEPublickKeyRequest) (*DistributeE2EEPublickKeyResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method DistributeE2EEPublickKey not implemented")
+func (UnimplementedSignalingServiceServer) DistributeE2EEPublicKey(context.Context, *DistributeE2EEPublicKeyRequest) (*DistributeE2EEPublicKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DistributeE2EEPublicKey not implemented")
 }
-func (UnimplementedSignalingServiceServer) DistributeE2EEEcnryptedMediaKey(context.Context, *DistributeE2EEEcnryptedMediaKeyRequest) (*DistributeE2EEEcnryptedMediaKeyResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method DistributeE2EEEcnryptedMediaKey not implemented")
+func (UnimplementedSignalingServiceServer) DistributeE2EEEncryptedMediaKey(context.Context, *DistributeE2EEEncryptedMediaKeyRequest) (*DistributeE2EEEncryptedMediaKeyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method DistributeE2EEEncryptedMediaKey not implemented")
 }
 func (UnimplementedSignalingServiceServer) mustEmbedUnimplementedSignalingServiceServer() {}
 func (UnimplementedSignalingServiceServer) testEmbeddedByValue()                          {}
@@ -136,38 +136,38 @@ func _SignalingService_GetJoinToken_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SignalingService_DistributeE2EEPublickKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DistributeE2EEPublickKeyRequest)
+func _SignalingService_DistributeE2EEPublicKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DistributeE2EEPublicKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SignalingServiceServer).DistributeE2EEPublickKey(ctx, in)
+		return srv.(SignalingServiceServer).DistributeE2EEPublicKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SignalingService_DistributeE2EEPublickKey_FullMethodName,
+		FullMethod: SignalingService_DistributeE2EEPublicKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SignalingServiceServer).DistributeE2EEPublickKey(ctx, req.(*DistributeE2EEPublickKeyRequest))
+		return srv.(SignalingServiceServer).DistributeE2EEPublicKey(ctx, req.(*DistributeE2EEPublicKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SignalingService_DistributeE2EEEcnryptedMediaKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DistributeE2EEEcnryptedMediaKeyRequest)
+func _SignalingService_DistributeE2EEEncryptedMediaKey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DistributeE2EEEncryptedMediaKeyRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(SignalingServiceServer).DistributeE2EEEcnryptedMediaKey(ctx, in)
+		return srv.(SignalingServiceServer).DistributeE2EEEncryptedMediaKey(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: SignalingService_DistributeE2EEEcnryptedMediaKey_FullMethodName,
+		FullMethod: SignalingService_DistributeE2EEEncryptedMediaKey_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SignalingServiceServer).DistributeE2EEEcnryptedMediaKey(ctx, req.(*DistributeE2EEEcnryptedMediaKeyRequest))
+		return srv.(SignalingServiceServer).DistributeE2EEEncryptedMediaKey(ctx, req.(*DistributeE2EEEncryptedMediaKeyRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -184,12 +184,12 @@ var SignalingService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _SignalingService_GetJoinToken_Handler,
 		},
 		{
-			MethodName: "DistributeE2EEPublickKey",
-			Handler:    _SignalingService_DistributeE2EEPublickKey_Handler,
+			MethodName: "DistributeE2EEPublicKey",
+			Handler:    _SignalingService_DistributeE2EEPublicKey_Handler,
 		},
 		{
-			MethodName: "DistributeE2EEEcnryptedMediaKey",
-			Handler:    _SignalingService_DistributeE2EEEcnryptedMediaKey_Handler,
+			MethodName: "DistributeE2EEEncryptedMediaKey",
+			Handler:    _SignalingService_DistributeE2EEEncryptedMediaKey_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
