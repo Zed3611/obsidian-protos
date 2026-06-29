@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package shared.v1;
+
+option go_package = "github.com/Zed3611/obsidian-protos/gen/go/shared/v1;shared_v1";
+
+message UserClaims {
+  int64 user_id = 1;
+  string email = 2;
+  int64 session_id = 3;
+}

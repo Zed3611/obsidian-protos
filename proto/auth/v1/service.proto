@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-option go_package = "obsidian.auth.v1";
+option go_package = "github.com/Zed3611/obsidian-protos/gen/go/auth/v1;auth_v1";
 
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);

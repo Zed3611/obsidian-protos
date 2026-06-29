@@ -4,7 +4,7 @@
 // 	protoc        v7.34.1
 // source: gateway/v1/service.proto
 
-package obsidian_gateway_v1
+package gateway_v1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -139,7 +139,7 @@ const file_gateway_v1_service_proto_rawDesc = "" +
 	"session_id\x18\x04 \x01(\x03R\tsessionId\"\x13\n" +
 	"\x11SendEventResponse2Z\n" +
 	"\x0eGatewayService\x12H\n" +
-	"\tSendEvent\x12\x1c.gateway.v1.SendEventRequest\x1a\x1d.gateway.v1.SendEventResponseB\x15Z\x13obsidian.gateway.v1b\x06proto3"
+	"\tSendEvent\x12\x1c.gateway.v1.SendEventRequest\x1a\x1d.gateway.v1.SendEventResponseBAZ?github.com/Zed3611/obsidian-protos/gen/go/gateway/v1;gateway_v1b\x06proto3"
 
 var (
 	file_gateway_v1_service_proto_rawDescOnce sync.Once

@@ -4,7 +4,7 @@
 // - protoc             v7.34.1
 // source: gateway/v1/service.proto
 
-package obsidian_gateway_v1
+package gateway_v1
 
 import (
 	context "context"

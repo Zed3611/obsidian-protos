@@ -4,7 +4,7 @@
 // - protoc             v7.34.1
 // source: auth/v1/service.proto
 
-package obsidian_auth_v1
+package auth_v1
 
 import (
 	context "context"

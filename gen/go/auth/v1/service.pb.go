@@ -4,7 +4,7 @@
 // 	protoc        v7.34.1
 // source: auth/v1/service.proto
 
-package obsidian_auth_v1
+package auth_v1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -833,7 +833,7 @@ const file_auth_v1_service_proto_rawDesc = "" +
 	"\fRefreshToken\x12\x1c.auth.v1.RefreshTokenRequest\x1a\x1d.auth.v1.RefreshTokenResponse\x12H\n" +
 	"\vGetSessions\x12\x1b.auth.v1.GetSessionsRequest\x1a\x1c.auth.v1.GetSessionsResponse\x12N\n" +
 	"\rRevokeSession\x12\x1d.auth.v1.RevokeSessionRequest\x1a\x1e.auth.v1.RevokeSessionResponse\x12Z\n" +
-	"\x11RevokeAllSessions\x12!.auth.v1.RevokeAllSessionsRequest\x1a\".auth.v1.RevokeAllSessionsResponseB\x12Z\x10obsidian.auth.v1b\x06proto3"
+	"\x11RevokeAllSessions\x12!.auth.v1.RevokeAllSessionsRequest\x1a\".auth.v1.RevokeAllSessionsResponseB;Z9github.com/Zed3611/obsidian-protos/gen/go/auth/v1;auth_v1b\x06proto3"
 
 var (
 	file_auth_v1_service_proto_rawDescOnce sync.Once

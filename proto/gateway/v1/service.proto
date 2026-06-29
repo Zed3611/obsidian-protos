@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package gateway.v1;
 
-option go_package = "obsidian.gateway.v1";
+option go_package = "github.com/Zed3611/obsidian-protos/gen/go/gateway/v1;gateway_v1";
 
 service GatewayService {
   rpc SendEvent(SendEventRequest) returns (SendEventResponse);

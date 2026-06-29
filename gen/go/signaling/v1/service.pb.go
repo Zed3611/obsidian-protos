@@ -4,9 +4,10 @@
 // 	protoc        v7.34.1
 // source: signaling/v1/service.proto
 
-package obsidian_signaling_v1
+package signaling_v1
 
 import (
+	v1 "github.com/Zed3611/obsidian-protos/gen/go/shared/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,7 +25,8 @@ const (
 // Join room
 type GetJoinTokenRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	RoomId        string                 `protobuf:"bytes,1,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	Claims        *v1.UserClaims         `protobuf:"bytes,1,opt,name=claims,proto3" json:"claims,omitempty"`
+	RoomId        string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,6 +61,13 @@ func (*GetJoinTokenRequest) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *GetJoinTokenRequest) GetClaims() *v1.UserClaims {
+	if x != nil {
+		return x.Claims
+	}
+	return nil
+}
+
 func (x *GetJoinTokenRequest) GetRoomId() string {
 	if x != nil {
 		return x.RoomId
@@ -69,6 +78,7 @@ func (x *GetJoinTokenRequest) GetRoomId() string {
 type GetJoinTokenResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
+	Url           string                 `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -110,12 +120,20 @@ func (x *GetJoinTokenResponse) GetToken() string {
 	return ""
 }
 
+func (x *GetJoinTokenResponse) GetUrl() string {
+	if x != nil {
+		return x.Url
+	}
+	return ""
+}
+
 // E2EE
 type DistributeE2EEPublicKeyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	PublicKey     []int64                `protobuf:"varint,1,rep,packed,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
-	RoomId        string                 `protobuf:"bytes,2,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	IsFirst       bool                   `protobuf:"varint,3,opt,name=is_first,json=isFirst,proto3" json:"is_first,omitempty"`
+	Claims        *v1.UserClaims         `protobuf:"bytes,1,opt,name=claims,proto3" json:"claims,omitempty"`
+	PublicKey     []int64                `protobuf:"varint,2,rep,packed,name=public_key,json=publicKey,proto3" json:"public_key,omitempty"`
+	RoomId        string                 `protobuf:"bytes,3,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	IsFirst       bool                   `protobuf:"varint,4,opt,name=is_first,json=isFirst,proto3" json:"is_first,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -148,6 +166,13 @@ func (x *DistributeE2EEPublicKeyRequest) ProtoReflect() protoreflect.Message {
 // Deprecated: Use DistributeE2EEPublicKeyRequest.ProtoReflect.Descriptor instead.
 func (*DistributeE2EEPublicKeyRequest) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *DistributeE2EEPublicKeyRequest) GetClaims() *v1.UserClaims {
+	if x != nil {
+		return x.Claims
+	}
+	return nil
 }
 
 func (x *DistributeE2EEPublicKeyRequest) GetPublicKey() []int64 {
@@ -209,11 +234,12 @@ func (*DistributeE2EEPublicKeyResponse) Descriptor() ([]byte, []int) {
 
 type DistributeE2EEEncryptedMediaKeyRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	MediaKey      []int64                `protobuf:"varint,1,rep,packed,name=media_key,json=mediaKey,proto3" json:"media_key,omitempty"`
-	Iv            []int64                `protobuf:"varint,2,rep,packed,name=iv,proto3" json:"iv,omitempty"`
-	KeyIndex      int64                  `protobuf:"varint,3,opt,name=key_index,json=keyIndex,proto3" json:"key_index,omitempty"`
-	RoomId        string                 `protobuf:"bytes,4,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
-	ToUserId      int64                  `protobuf:"varint,5,opt,name=to_user_id,json=toUserId,proto3" json:"to_user_id,omitempty"`
+	Claims        *v1.UserClaims         `protobuf:"bytes,1,opt,name=claims,proto3" json:"claims,omitempty"`
+	MediaKey      []int64                `protobuf:"varint,2,rep,packed,name=media_key,json=mediaKey,proto3" json:"media_key,omitempty"`
+	Iv            []int64                `protobuf:"varint,3,rep,packed,name=iv,proto3" json:"iv,omitempty"`
+	KeyIndex      int64                  `protobuf:"varint,4,opt,name=key_index,json=keyIndex,proto3" json:"key_index,omitempty"`
+	RoomId        string                 `protobuf:"bytes,5,opt,name=room_id,json=roomId,proto3" json:"room_id,omitempty"`
+	ToSessionId   int64                  `protobuf:"varint,6,opt,name=to_session_id,json=toSessionId,proto3" json:"to_session_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -248,6 +274,13 @@ func (*DistributeE2EEEncryptedMediaKeyRequest) Descriptor() ([]byte, []int) {
 	return file_signaling_v1_service_proto_rawDescGZIP(), []int{4}
 }
 
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetClaims() *v1.UserClaims {
+	if x != nil {
+		return x.Claims
+	}
+	return nil
+}
+
 func (x *DistributeE2EEEncryptedMediaKeyRequest) GetMediaKey() []int64 {
 	if x != nil {
 		return x.MediaKey
@@ -276,9 +309,9 @@ func (x *DistributeE2EEEncryptedMediaKeyRequest) GetRoomId() string {
 	return ""
 }
 
-func (x *DistributeE2EEEncryptedMediaKeyRequest) GetToUserId() int64 {
+func (x *DistributeE2EEEncryptedMediaKeyRequest) GetToSessionId() int64 {
 	if x != nil {
-		return x.ToUserId
+		return x.ToSessionId
 	}
 	return 0
 }
@@ -323,29 +356,32 @@ var File_signaling_v1_service_proto protoreflect.FileDescriptor
 
 const file_signaling_v1_service_proto_rawDesc = "" +
 	"\n" +
-	"\x1asignaling/v1/service.proto\x12\fsignaling.v1\".\n" +
-	"\x13GetJoinTokenRequest\x12\x17\n" +
-	"\aroom_id\x18\x01 \x01(\tR\x06roomId\",\n" +
+	"\x1asignaling/v1/service.proto\x12\fsignaling.v1\x1a\x16shared/v1/shared.proto\"]\n" +
+	"\x13GetJoinTokenRequest\x12-\n" +
+	"\x06claims\x18\x01 \x01(\v2\x15.shared.v1.UserClaimsR\x06claims\x12\x17\n" +
+	"\aroom_id\x18\x02 \x01(\tR\x06roomId\">\n" +
 	"\x14GetJoinTokenResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token\"s\n" +
-	"\x1eDistributeE2EEPublicKeyRequest\x12\x1d\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\x12\x10\n" +
+	"\x03url\x18\x02 \x01(\tR\x03url\"\xa2\x01\n" +
+	"\x1eDistributeE2EEPublicKeyRequest\x12-\n" +
+	"\x06claims\x18\x01 \x01(\v2\x15.shared.v1.UserClaimsR\x06claims\x12\x1d\n" +
 	"\n" +
-	"public_key\x18\x01 \x03(\x03R\tpublicKey\x12\x17\n" +
-	"\aroom_id\x18\x02 \x01(\tR\x06roomId\x12\x19\n" +
-	"\bis_first\x18\x03 \x01(\bR\aisFirst\"!\n" +
-	"\x1fDistributeE2EEPublicKeyResponse\"\xa9\x01\n" +
-	"&DistributeE2EEEncryptedMediaKeyRequest\x12\x1b\n" +
-	"\tmedia_key\x18\x01 \x03(\x03R\bmediaKey\x12\x0e\n" +
-	"\x02iv\x18\x02 \x03(\x03R\x02iv\x12\x1b\n" +
-	"\tkey_index\x18\x03 \x01(\x03R\bkeyIndex\x12\x17\n" +
-	"\aroom_id\x18\x04 \x01(\tR\x06roomId\x12\x1c\n" +
-	"\n" +
-	"to_user_id\x18\x05 \x01(\x03R\btoUserId\")\n" +
+	"public_key\x18\x02 \x03(\x03R\tpublicKey\x12\x17\n" +
+	"\aroom_id\x18\x03 \x01(\tR\x06roomId\x12\x19\n" +
+	"\bis_first\x18\x04 \x01(\bR\aisFirst\"!\n" +
+	"\x1fDistributeE2EEPublicKeyResponse\"\xde\x01\n" +
+	"&DistributeE2EEEncryptedMediaKeyRequest\x12-\n" +
+	"\x06claims\x18\x01 \x01(\v2\x15.shared.v1.UserClaimsR\x06claims\x12\x1b\n" +
+	"\tmedia_key\x18\x02 \x03(\x03R\bmediaKey\x12\x0e\n" +
+	"\x02iv\x18\x03 \x03(\x03R\x02iv\x12\x1b\n" +
+	"\tkey_index\x18\x04 \x01(\x03R\bkeyIndex\x12\x17\n" +
+	"\aroom_id\x18\x05 \x01(\tR\x06roomId\x12\"\n" +
+	"\rto_session_id\x18\x06 \x01(\x03R\vtoSessionId\")\n" +
 	"'DistributeE2EEEncryptedMediaKeyResponse2\xf2\x02\n" +
 	"\x10SignalingService\x12U\n" +
 	"\fGetJoinToken\x12!.signaling.v1.GetJoinTokenRequest\x1a\".signaling.v1.GetJoinTokenResponse\x12v\n" +
 	"\x17DistributeE2EEPublicKey\x12,.signaling.v1.DistributeE2EEPublicKeyRequest\x1a-.signaling.v1.DistributeE2EEPublicKeyResponse\x12\x8e\x01\n" +
-	"\x1fDistributeE2EEEncryptedMediaKey\x124.signaling.v1.DistributeE2EEEncryptedMediaKeyRequest\x1a5.signaling.v1.DistributeE2EEEncryptedMediaKeyResponseB\x17Z\x15obsidian.signaling.v1b\x06proto3"
+	"\x1fDistributeE2EEEncryptedMediaKey\x124.signaling.v1.DistributeE2EEEncryptedMediaKeyRequest\x1a5.signaling.v1.DistributeE2EEEncryptedMediaKeyResponseBEZCgithub.com/Zed3611/obsidian-protos/gen/go/signaling/v1;signaling_v1b\x06proto3"
 
 var (
 	file_signaling_v1_service_proto_rawDescOnce sync.Once
@@ -367,19 +403,23 @@ var file_signaling_v1_service_proto_goTypes = []any{
 	(*DistributeE2EEPublicKeyResponse)(nil),         // 3: signaling.v1.DistributeE2EEPublicKeyResponse
 	(*DistributeE2EEEncryptedMediaKeyRequest)(nil),  // 4: signaling.v1.DistributeE2EEEncryptedMediaKeyRequest
 	(*DistributeE2EEEncryptedMediaKeyResponse)(nil), // 5: signaling.v1.DistributeE2EEEncryptedMediaKeyResponse
+	(*v1.UserClaims)(nil),                           // 6: shared.v1.UserClaims
 }
 var file_signaling_v1_service_proto_depIdxs = []int32{
-	0, // 0: signaling.v1.SignalingService.GetJoinToken:input_type -> signaling.v1.GetJoinTokenRequest
-	2, // 1: signaling.v1.SignalingService.DistributeE2EEPublicKey:input_type -> signaling.v1.DistributeE2EEPublicKeyRequest
-	4, // 2: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:input_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyRequest
-	1, // 3: signaling.v1.SignalingService.GetJoinToken:output_type -> signaling.v1.GetJoinTokenResponse
-	3, // 4: signaling.v1.SignalingService.DistributeE2EEPublicKey:output_type -> signaling.v1.DistributeE2EEPublicKeyResponse
-	5, // 5: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:output_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6, // 0: signaling.v1.GetJoinTokenRequest.claims:type_name -> shared.v1.UserClaims
+	6, // 1: signaling.v1.DistributeE2EEPublicKeyRequest.claims:type_name -> shared.v1.UserClaims
+	6, // 2: signaling.v1.DistributeE2EEEncryptedMediaKeyRequest.claims:type_name -> shared.v1.UserClaims
+	0, // 3: signaling.v1.SignalingService.GetJoinToken:input_type -> signaling.v1.GetJoinTokenRequest
+	2, // 4: signaling.v1.SignalingService.DistributeE2EEPublicKey:input_type -> signaling.v1.DistributeE2EEPublicKeyRequest
+	4, // 5: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:input_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyRequest
+	1, // 6: signaling.v1.SignalingService.GetJoinToken:output_type -> signaling.v1.GetJoinTokenResponse
+	3, // 7: signaling.v1.SignalingService.DistributeE2EEPublicKey:output_type -> signaling.v1.DistributeE2EEPublicKeyResponse
+	5, // 8: signaling.v1.SignalingService.DistributeE2EEEncryptedMediaKey:output_type -> signaling.v1.DistributeE2EEEncryptedMediaKeyResponse
+	6, // [6:9] is the sub-list for method output_type
+	3, // [3:6] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_signaling_v1_service_proto_init() }

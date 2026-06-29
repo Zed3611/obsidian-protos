@@ -4,7 +4,7 @@
 // - protoc             v7.34.1
 // source: signaling/v1/service.proto
 
-package obsidian_signaling_v1
+package signaling_v1
 
 import (
 	context "context"

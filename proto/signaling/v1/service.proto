@@ -2,7 +2,9 @@ syntax = "proto3";
 
 package signaling.v1;
 
-option go_package = "obsidian.signaling.v1";
+import "shared/v1/shared.proto";
+
+option go_package = "github.com/Zed3611/obsidian-protos/gen/go/signaling/v1;signaling_v1";
 
 service SignalingService {
   rpc GetJoinToken(GetJoinTokenRequest) returns (GetJoinTokenResponse);
@@ -12,28 +14,32 @@ service SignalingService {
 
 // Join room
 message GetJoinTokenRequest {
-  string room_id = 1;
+  shared.v1.UserClaims claims = 1;
+  string room_id = 2;
 }
 
 message GetJoinTokenResponse {
   string token = 1;
+  string url = 2;
 }
 
 // E2EE
 message DistributeE2EEPublicKeyRequest {
-  repeated int64 public_key = 1;
-  string room_id = 2;
-  bool is_first = 3;
+  shared.v1.UserClaims claims = 1;
+  repeated int64 public_key = 2;
+  string room_id = 3;
+  bool is_first = 4;
 }
 
 message DistributeE2EEPublicKeyResponse {}
 
 message DistributeE2EEEncryptedMediaKeyRequest {
-  repeated int64 media_key = 1;
-  repeated int64 iv = 2;
-  int64 key_index = 3;
-  string room_id = 4;
-  int64 to_user_id = 5;
+  shared.v1.UserClaims claims = 1;
+  repeated int64 media_key = 2;
+  repeated int64 iv = 3;
+  int64 key_index = 4;
+  string room_id = 5;
+  int64 to_session_id = 6;
 }
 
 message DistributeE2EEEncryptedMediaKeyResponse {}
